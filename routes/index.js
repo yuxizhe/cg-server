@@ -27,4 +27,9 @@ router.get('/cg/burn-list', (req, res, next) => {
     res.json(global.burnList)
   }
 })
+router.get('/cg/balance', (req, res, next) => {
+  if(global.balance){
+    res.json(global.balance)
+  }
+})
 module.exports = router;

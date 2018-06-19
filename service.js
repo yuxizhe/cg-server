@@ -72,10 +72,18 @@ function getBurnList(){
   })
 }
 
+function getBalance(){
+  nebGet('balance', []).then(res2 => {
+    global.balance = res2
+    console.log('get balance')
+  })
+}
+
 function getList(){
   getBuyList()
   getSellList()
   getBurnList()
+  getBalance()
 }
 
 
