@@ -32,4 +32,10 @@ router.get('/cg/balance', (req, res, next) => {
     res.json(global.balance)
   }
 })
+router.get('/cg/insure-balance', (req, res, next) => {
+  if(global.insureBalance){
+    res.json(global.insureBalance)
+  }
+})
+
 module.exports = router;

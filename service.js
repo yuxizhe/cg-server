@@ -73,9 +73,15 @@ function getBurnList(){
 }
 
 function getBalance(){
-  nebGet('balance', []).then(res2 => {
-    global.balance = res2
+  nebGet('balance', []).then(res => {
+    global.balance = res
     console.log('get balance')
+  })
+}
+function getInsureBalance(){
+  nebGet('insureBalance', []).then(res => {
+    global.insureBalance = res
+    console.log('get insure balance')
   })
 }
 
@@ -84,6 +90,7 @@ function getList(){
   getSellList()
   getBurnList()
   getBalance()
+  getInsureBalance()
 }
 
 
