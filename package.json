@@ -1,0 +1,26 @@
+{
+  "name": "npm-nebulas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "NODE_ENV=dev node ./bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=8.1"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "extend": "^3.0.1",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "nebulas": "^0.5.2",
+    "serve-favicon": "~2.4.5"
+  }
+}
