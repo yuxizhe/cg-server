@@ -103,7 +103,7 @@ function getList() {
 
 function service() {
   getList()
-  setInterval(getList, 25000)
+  setInterval(getList, 15000)
 }
 
 module.exports = service
