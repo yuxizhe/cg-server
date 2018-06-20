@@ -1,7 +1,7 @@
 var Nebulas = require('nebulas')
 
-var Neb = Nebulas.Neb;
-var neb = new Neb();
+var Neb = Nebulas.Neb
+var neb = new Neb()
 neb.setRequest(new Nebulas.HttpRequest('https://mainnet.nebulas.io'))
 
 var dappAddress = 'n1sr4JA4e9QPB4opLk2Kjmp8NkP6GGoAmnt'
@@ -35,17 +35,25 @@ function nebGet(func, args, address) {
       .then(data => {
         try {
           var result = JSON.parse(data.result)
-          res(result)
+          if (result && result.length > 0) {
+            res(result)
+          } else {
+            console.error('error')
+            rej('error')
+          }
         } catch (error) {
           console.error(error)
           rej('error')
         }
       })
+      .catch(error => {
+        console.error(error)
+        rej('error')
+      })
   })
 }
 
-
-function getBuyList(){
+function getBuyList() {
   nebGet('buyOrderIndex', []).then(res => {
     nebGet('getBuyOrder', [res]).then(res2 => {
       global.buyList = res2
@@ -54,7 +62,7 @@ function getBuyList(){
   })
 }
 
-function getSellList(){
+function getSellList() {
   nebGet('sellOrderIndex', []).then(res => {
     nebGet('getSellOrder', [res]).then(res2 => {
       global.sellList = res2
@@ -63,7 +71,7 @@ function getSellList(){
   })
 }
 
-function getBurnList(){
+function getBurnList() {
   nebGet('burnOrderIndex', []).then(res => {
     nebGet('getBurnOrder', [res]).then(res2 => {
       global.burnList = res2
@@ -72,20 +80,20 @@ function getBurnList(){
   })
 }
 
-function getBalance(){
+function getBalance() {
   nebGet('balance', []).then(res => {
     global.balance = res
     console.log('get balance')
   })
 }
-function getInsureBalance(){
+function getInsureBalance() {
   nebGet('insureBalance', []).then(res => {
     global.insureBalance = res
     console.log('get insure balance')
   })
 }
 
-function getList(){
+function getList() {
   getBuyList()
   getSellList()
   getBurnList()
@@ -93,10 +101,9 @@ function getList(){
   getInsureBalance()
 }
 
-
-function service(){
+function service() {
   getList()
-  setInterval(getList, 15000)
+  setInterval(getList, 25000)
 }
 
 module.exports = service
